@@ -14,7 +14,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    if (this.state.data.length == 0) {
+      this.getData();
+    }
   }
 
   getData = () => {
@@ -28,12 +30,17 @@ class App extends Component {
       });
   };
 
+  onClick = () => {
+    this.setState(data: data[0].url);
+    this.componentDidMount();
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
         <div className="tab_container">
-          <Tab />
+          <Tab onClick={this.onClick()} data={this.state.data} />
         </div>
         <Footer />
       </div>
@@ -42,3 +49,4 @@ class App extends Component {
 }
 
 export default App;
+

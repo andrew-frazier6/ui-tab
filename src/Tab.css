@@ -1,0 +1,8 @@
+.tab_box {
+  margin: 20px;
+  margin-top: 20px;
+  height: 90%;
+  width: 100%;
+  background-color: black;
+  z-index: 1;
+}

@@ -20,5 +20,8 @@ body {
   height: 60%;
   width: 60%;
   background-color: white;
-  border: black solid 2px;
+  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

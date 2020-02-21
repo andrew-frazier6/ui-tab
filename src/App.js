@@ -3,44 +3,66 @@ import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Tab from "./Tab.js";
+import Photo from "./Photo";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      data: ""
+      places: null,
+      tabSelected: "1",
+      idSelected: ""
     };
   }
 
   componentDidMount() {
-    if (this.state.data.length == 0) {
-      this.getData();
-    }
+    fetch(
+      "https://developer.nps.gov/api/v1/places?api_key=bRrLhFfbvZMWxHlCWDqPt45vwoNgz950IaYNYkmC"
+    )
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            places: result.data
+          });
+          console.log(result.data);
+        },
+        error => {
+          this.setState({
+            error
+          });
+        }
+      );
   }
 
-  getData = () => {
-    let url =
-      "https://developer.nps.gov/api/v1/places?api_key=bRrLhFfbvZMWxHlCWDqPt45vwoNgz950IaYNYkmC";
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ data: data });
-        console.log(data);
-      });
+  handleClick = e => {
+    this.setState({
+      tabSelected: e.target.value,
+      idSelected: e.target.id
+    });
   };
 
-  onClick = () => {
-    this.setState(data: data[0].url);
-    this.componentDidMount();
+  showPhoto = () => {
+    return this.state.places
+      ? this.state.places.map((place, i) => {
+          if (place.id === this.state.idSelected) {
+            return <Photo url={place.listingimage.url} key={i} />;
+          }
+        })
+      : "";
   };
 
   render() {
+    console.log(this.state.idSelected);
+    let myData = this.state.places ? this.state.places[0].title : "loading...";
+
     return (
       <div className="App">
         <Header />
         <div className="tab_container">
-          <Tab onClick={this.onClick()} data={this.state.data} />
+          <Tab handleClick={this.handleClick} />
+          {this.showPhoto()}
         </div>
         <Footer />
       </div>
@@ -49,4 +71,3 @@ class App extends Component {
 }
 
 export default App;
-

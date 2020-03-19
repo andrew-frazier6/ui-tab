@@ -1,20 +1,7 @@
-.tab_box {
-  margin: 20px;
-  margin-top: 20px;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-}
-
 .nav {
   background-color: black;
   width: 100%;
-  height: 12%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,8 +32,8 @@ li {
   background-color: grey;
 }
 
-.info_box {
+/* .info_box {
   height: 80%;
   width: 100%;
   background-color: white;
-}
+} */

@@ -3,24 +3,23 @@ import "./Tab.css";
 
 function Tab(props) {
   return (
-    <div className="tab_box">
-      <div className="nav">
-        <ul>
-          <li onClick={props.handleClick} id="4874042" value="1">
-            Fort Smith
-          </li>
-          <li onClick={props.handleClick} id="4874090" value="2">
-            Harpers Ferry
-          </li>
-          <li onClick={props.handleClick} id="4874185" value="3">
-            Bloody Lane
-          </li>
-          <li onClick={props.handleClick} id="4874072" value="4">
-            Stone House
-          </li>
-        </ul>
-      </div>
-      <div className="info_box">{props.title}</div>
+    <div className="nav">
+      <ul>
+        <li onClick={props.handleClick} id="4874042" value="1">
+          Fort Smith
+        </li>
+        <li onClick={props.handleClick} id="4874090" value="2">
+          Harpers Ferry
+        </li>
+        <li onClick={props.handleClick} id="4874185" value="3">
+          Bloody Lane
+        </li>
+        <li onClick={props.handleClick} id="4874072" value="4">
+          Stone House
+        </li>
+      </ul>
+
+      {props.title}
     </div>
   );
 }
